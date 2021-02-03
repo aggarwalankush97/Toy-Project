@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Edited Articles</h1>
+<br\>
+    {% csrf_token %}
+
+    <table class='table table-bordered table-hover table-dark'>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in article %}
+            <tr>
+                <td>{{r.title}}</td>
+                <td>{{r.content}}</td>
+                <td>{{r.status}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock %}

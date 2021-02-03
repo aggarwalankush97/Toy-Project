@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Approve Articles</h1>
+<br\>
+    {% csrf_token %}
+
+    <table class='table table-bordered table-hover table-dark'>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Status</th>
+                <th>Approve</th>
+                <th>Reject</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in article %}
+            <tr>
+                <td>{{r.title}}</td>
+                <td>{{r.content}}</td>
+                <td>{{r.status}}</td>
+                <td><a type="button" class='btn btn-primary' href="/approved/{{ r.id }}">Approve</button></td>
+                <td><a type="button" class='btn btn-primary' href="/rejected/{{ r.id }}">Reject</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock %}

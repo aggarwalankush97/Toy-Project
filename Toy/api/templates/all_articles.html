@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> Articles</h1>
+<br\>
+    {% csrf_token %}
+
+
+    <table class='table table-bordered table-hover table-dark'>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Status</th>
+
+        </thead>
+        <tbody>
+            {% for r in articles %}
+            <tr>
+                <td><a href="/article/{{ r.id }}">{{r.title}}</td>
+                <td>{{r.content}}</td>
+                <td>{{r.status}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock %}
